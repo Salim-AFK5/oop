@@ -34,13 +34,17 @@ public class MainFrame extends JFrame{
             String inputText = input.getText();
             StringBuilder outputText = new StringBuilder(inputText);
             int length = outputText.length();
-            int startIndex = length % 2 == 0 ? length / 2 - 1 : length / 2;
-            outputText = new StringBuilder(outputText.substring(startIndex));
-            for (int i = 2; i < outputText.length(); i += 2) {
+            if (length % 2 == 0){
+                length = length / 2 - 1;
+            }
+            else {
+                length = length / 2;
+            }
+            outputText = new StringBuilder(outputText.substring(length));
+            for (int i = 2; i < outputText.length(); i = i + 2) {
                 outputText.deleteCharAt(i);
             }
             output.setText(outputText.toString());
         }
     }
-
 }
